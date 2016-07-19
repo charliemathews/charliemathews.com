@@ -66,3 +66,26 @@
 	-moz-transform: translate($x, $y) ;
 	-webkit-transform: translate($x, $y) ;
 }
+
+@mixin transform_rotate($angle) {
+	-webkit-transform: rotate($angle);
+	-moz-transform: rotate($angle);
+	-ms-transform: rotate($angle);
+	-o-transform: rotate($angle);
+	transform: rotate($angle);
+}
+
+@mixin transition($request) {
+	-webkit-transiton: $request;
+  -moz-transition: $request;
+  -ms-transition: $request;
+  -o-transition: $request;
+  transition: $request;
+}
+
+@mixin animation($request) {
+	animation: $request ;
+	-webkit-animation: $request;
+	-moz-animation: $request;
+	-ms-animation: $request;
+}

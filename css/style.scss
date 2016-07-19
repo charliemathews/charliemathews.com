@@ -96,10 +96,7 @@
 		position: absolute ;
 		top: 50% ;
 		left: 50% ;
-		transform: translate(-50%, -50%) ;
-		-webkit-transform: translate(-50%, -50%) ;
-		-moz-transform: translate(-50%, -50%) ;
-		-ms-transform: translate(-50%, -50%) ;
+		@include transform_translate(-50%, -50%);
 	}
 
 	#preloader {
@@ -112,10 +109,7 @@
 		height: 30px ;
 		background: #2C3E47 ;
 		border-radius: 50px ;
-		animation: preloader 1.3s infinite linear ;
-		-webkit-animation: preloader 1.3s infinite linear;
-		-moz-animation: preloader 1.3s infinite linear;
-		-ms-animation: preloader 1.3s infinite linear;
+		@include animation(preloader 1.3s infinite linear);
 	}
 
 	#preloader:after {
@@ -130,10 +124,7 @@
 		content:'';
 		top:-20px;
 		left:-20px;
-		animation: preloader_after 1.3s infinite linear;
-		-webkit-animation: preloader_after 1.3s infinite linear;
-		-moz-animation: preloader_after 1.3s infinite linear;
-		-ms-animation: preloader_after 1.3s infinite linear;
+		@include animation(preloader_after 1.3s infinite linear);
 	}
 
 	@-webkit-keyframes preloader {
@@ -230,8 +221,6 @@
 		margin-left: 20px ;
 		margin-top: 4px ;
 		font-weight: 300 ;
-		//letter-spacing: 4px ;
-		//text-transform: uppercase ;
 	}
 
 	#connect {
@@ -244,49 +233,103 @@
 	/* Menu */
 	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
+	$burger_height: 25px ;
+	$menu_speed: .4s;
+	$menu_transition: all $menu_speed ease;
+	$burger_margin: (($header_height - $burger_height)/2) ;
+
 	nav {
-		float: left ;
-		font-family: 'PT Serif', serif ;
-		//font-weight: 400 ;
-		font-size: 18px ;
-		font-style: italic ;
-		margin-bottom: 20px ;
-		margin-left: 70px ;
-	}
+		float: right ;
+		margin-top: $burger_margin;
+		position: relative ;
+		display: block ;
 
-	nav ul {
-		padding: 0 ;
-		margin: 0 ;
-		list-style: none ;
-	}
+		& #menu {
+			position: absolute ;
+			top: $burger_margin + $burger_height ;
+			right: 0 ;
+			margin: 0 ;
+			padding: 0 ;
+			list-style-type: none ;
 
-	nav ul li {
-		float: left ;
-		border-right: 1px solid #f0f0f0 ;
-		margin-right: 5px ;
-		padding-right: 5px ;
-	}
+			// invisible by default
+			opacity: 0 ;
+			visibility: hidden ;
+			//display: none ;
+			@include transition($menu_transition);
 
-	nav ul li:last-child {
-		border: none ;
-		margin-right: 0 ;
-		padding-right: 0 ;
-	}
+			& li {
+				cursor: pointer ;
+			}
 
-	nav ul li a {
-		text-decoration: none ;
-	}
+			& a {
+				font-family: "Open Sans" ;
+				font-size: 16px ;
+				font-weight: 500 ;
+				text-decoration: none ;
+				color: $color_menuItem ;
 
-	nav ul li a:visited {
-		color: $color_defaultFontColor ;
-	}
+				&:hover {
+					text-decoration: underline ;
+				}
+			}
+		}
 
-	nav ul li a:hover {
-		text-decoration: underline ;
-	}
+		& .open {
+			//display: block !important ;
+			opacity: 1 !important ;
+			visibility: visible !important ;
+		}
 
-	.selected {
-		text-decoration: underline ;
+		& #burger {
+			float: right ;
+		  background: $color_menuPrimary ;
+		  cursor: pointer;
+		  height: 25px;
+			width: 25px;
+		  position: relative ;
+		  @include transition($menu_transition);
+		  user-select: none ;
+		  z-index: 12;
+		}
+
+		& .bun {
+		  background: $color_menuSecondary ;
+		  position: relative;
+		  @include transition($menu_transition);
+			height: 2px ;
+			width: 25px;
+
+		  &-top {
+		    top: 0;
+		  }
+
+		  &-mid {
+		    top: 8px;
+		  }
+
+		  &-bot {
+		    top: 16px;
+		  }
+		}
+
+		& .cross {
+			& .bun {
+				&-top {
+					background: $color_menuSecondary;
+		      top: 9px;
+		    	@include transform_rotate(45deg);
+				}
+				&-mid {
+					opacity: 0 ;
+				}
+				&-bot {
+					background: $color_menuSecondary;
+		      top: 5px;
+		      @include transform_rotate(-45deg);
+				}
+			}
+		}
 	}
 
 	/* Content */
@@ -365,12 +408,11 @@ footer {
 	header #title {
 		font-size: 20px ;
 		margin-left: 15px ;
-		margin-top: 10px ;
+		margin-top: 11px ;
 	}
 
 	nav {
 		float: right ;
-		margin: -36px 0 50px 0 ;
 	}
 
 	#column {
