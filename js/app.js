@@ -3,7 +3,7 @@
 $(document).ready(function($) {
 
 	//hide preloader
-	//$("#loading").animate({opacity: 0}, 400);
-	//setTimeout(function() {$("#loading").remove();}, 400);
+	$("#loading").animate({opacity: 0}, 400);
+	setTimeout(function() {$("#loading").remove();}, 400);
 
 });

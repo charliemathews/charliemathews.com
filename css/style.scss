@@ -1,48 +1,29 @@
 @import 'normalize';
 @import 'mixins';
+@import 'colors';
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700);
 @import url(http://fonts.googleapis.com/css?family=PT+Serif);
 
-$color_defaultFontColor:	#303030 ;
-$color_title: 						#E4E9ED ;
-$color_titleTag: 					#C8D3DB ;
-$color_loadingBackground: #FFFFFF ;
-
 @media all
 {
+	/* General */
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	html, body {
-  	max-width: 100%;
-    overflow-x: hidden;
-		//width: 100% ;
+		width: 100% ;
 		color: $color_defaultFontColor ;
 	}
 
-	header #title
-	{
-		display: table ;
-		margin: 40px auto 0 ;
-		font-family: 'Open Sans', sans-serif ;
-		font-size: 69px ;
-		font-weight: 300 ;
-		letter-spacing: 4px ;
-		text-transform: uppercase ;
-		color: $color_title ;
-	}
-
-	header #tag
-	{
-		display: table ;
-		margin: -20px auto 40px ;
-		font-family: 'Open Sans', sans-serif ;
-		font-size: 19px ;
-		color: $color_titleTag ;
-	}
-
-	h2
-	{
+	h2 {
 		margin: 0 ;
 	}
 
+	#column {
+		margin: 0 auto ;
+		width: 700px ;
+	}
+
+	/* Loading animation */
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 	.off {
 		-moz-animation-name: none !important ;
 		-webkit-animation-name: none !important ;
@@ -71,10 +52,6 @@ $color_loadingBackground: #FFFFFF ;
 		height: 100% ;
 		z-index: 200 ;
 		background: $color_loadingBackground ;
-	}
-
-	#loading:after {
-		clear: both ;
 	}
 
 	#preloader-wrap {
@@ -107,8 +84,8 @@ $color_loadingBackground: #FFFFFF ;
 		position:absolute;
 		width:50px;
 		height:50px;
-		border-top:10px solid #2C3E47;
-		border-bottom:10px solid #2C3E47;
+		border-top:10px solid $color_preloadPrimary;
+		border-bottom:10px solid $color_preloadPrimary;
 		border-left:10px solid transparent;
 		border-right:10px solid transparent;
 		border-radius:50px;
@@ -123,43 +100,43 @@ $color_loadingBackground: #FFFFFF ;
 
 	@-webkit-keyframes preloader {
 		0% {-webkit-transform: rotate(0deg);}
-		50% {-webkit-transform: rotate(180deg);background:#525F66;}
+		50% {-webkit-transform: rotate(180deg);background:$color_preloadSecondary;}
 		100% {-webkit-transform: rotate(360deg);}
 	}
 	@-webkit-keyframes preloader_after {
-		0% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		0% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 		50% {border-top:10px solid #FFFFFF;border-bottom:10px solid #FFFFFF;}
-		100% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		100% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 	}
 	@-moz-keyframes preloader {
 		0% {-moz-transform: rotate(0deg);}
-		50% {-moz-transform: rotate(180deg);background:#525F66;}
+		50% {-moz-transform: rotate(180deg);background:$color_preloadSecondary;}
 		100% {-moz-transform: rotate(360deg);}
 	}
 	@-moz-keyframes preloader_after {
-		0% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		0% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 		50% {border-top:10px solid #FFFFFF;border-bottom:10px solid #FFFFFF;}
-		100% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		100% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 	}
 	@-ms-keyframes preloader {
 		0% {-ms-transform: rotate(0deg);}
-		50% {-ms-transform: rotate(180deg);background:#525F66;}
+		50% {-ms-transform: rotate(180deg);background:$color_preloadSecondary;}
 		100% {-ms-transform: rotate(360deg);}
 	}
 	@-ms-keyframes preloader_after {
-		0% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		0% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 		50% {border-top:10px solid #FFFFFF;border-bottom:10px solid #FFFFFF;}
-		100% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		100% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 	}
 	@keyframes preloader {
 		0% {transform: rotate(0deg);}
-		50% {transform: rotate(180deg);background:#525F66;}
+		50% {transform: rotate(180deg);background:$color_preloadSecondary;}
 		100% {transform: rotate(360deg);}
 	}
 	@keyframes preloader_after {
-		0% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		0% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 		50% {border-top:10px solid #FFFFFF;border-bottom:10px solid #FFFFFF;}
-		100% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
+		100% {border-top:10px solid $color_preloadPrimary;border-bottom:10px solid $color_preloadPrimary;}
 	}
 
 	#preloader-tag {
@@ -177,30 +154,70 @@ $color_loadingBackground: #FFFFFF ;
 		color: #FFFFFF ;
 	}
 
-	#content
-	{
+	/* Header / Title */
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	$header_height: 50px ;
+
+	header {
 		padding: 50px 0 ;
-		width: 700px ;
+		width: auto ;
+		height: $header_height ;
+		clear: both ;
+	}
+
+	$titlePhoto_borderWidth: 0px ;
+	$titlePhoto_backgroundDiameter: ($header_height - ($titlePhoto_borderWidth*2)) ;
+
+	header #picture_border {
+		float: left ;
+		padding: $titlePhoto_borderWidth ;
+		@include border-radius($header_height) ;
+		@include box-shadow(0, 0, 0px, 0px, #afafaf) ;
+	}
+
+	header #picture {
+		@include border-radius($header_height/2) ;
+		width: $titlePhoto_backgroundDiameter ;
+		height: $titlePhoto_backgroundDiameter ;
+		background-color: $color_titlePhoto ;
+		background: url('../assets/avatar.jpg') ;
+		background-size: cover ;
+	}
+
+	header #title {
+		float: left ;
+		font-family: 'Open Sans', sans-serif ;
+		font-size: 30px ;
+		color: $color_title ;
+		margin-left: 20px ;
+		margin-top: 4px ;
+		font-weight: 300 ;
+		//letter-spacing: 4px ;
+		//text-transform: uppercase ;
+	}
+
+	/* Content */
+	/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+	#content {
+		padding: 50px 0 ;
+		width: auto ;
 		margin: auto ;
 		clear: both ;
 	}
 
-	article
-	{
+	article {
 		font-family: 'Open Sans', serif ;
 		clear: both ;
 		margin-bottom: 10px ;
 	}
 
-	.article-meta
-	{
+	.article-meta {
 		text-transform: uppercase ;
 		color: #A1A1A1 ;
 		font-size: 12px ;
 	}
 
-	article > h2
-	{
+	article > h2 {
 		font-size: 57px ;
 		font-weight: 700 ;
 		letter-spacing: -0.04em ;
@@ -210,8 +227,7 @@ $color_loadingBackground: #FFFFFF ;
 		color: #222222 ;
 	}
 
-	article > p
-	{
+	article > p {
 		font-family: 'PT Serif', serif ;
 		font-weight: 400 ;
 		font-size: 21px ;
@@ -221,46 +237,44 @@ $color_loadingBackground: #FFFFFF ;
 	}
 }
 
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* 	Everything below this line adjusts the default
+		styles according to changes in viewport size. 	*/
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
 @media (max-width: 800px)
 {
-	#content
-	{
+	#column {
 		width: 500px ;
 	}
 
-	article > h2
-	{
+	article > h2 {
 		font-size: 35px ;
 	}
 }
 
 @media (max-width: 570px)
 {
-	header #title
-	{
-		font-size: 40px ;
-		letter-spacing: 4px ;
+	header {
+		padding: 0 ;
 	}
 
-	header #tag
-	{
-		margin-top: -10px ;
-		font-size: 14px ;
+	header #title {
+		font-size: 20px ;
+		margin-left: 15px ;
+		margin-top: 10px ;
 	}
 
-	#content
-	{
+	#column {
 		width: auto ;
 		padding: 30px ;
 	}
 
-	article > h2
-	{
+	article > h2 {
 		font-size: 24px ;
 	}
 
-	article > p
-	{
+	article > p {
 		font-size: 18px ;
 		line-height: 30px ;
 	}
@@ -268,14 +282,12 @@ $color_loadingBackground: #FFFFFF ;
 
 @media (max-width: 450px)
 {
-	#content
-	{
+	#column {
 		width: auto ;
 		padding: 10px ;
 	}
 
-	article > p
-	{
+	article > p {
 		font-size: 16px ;
 		line-height: 24px ;
 	}

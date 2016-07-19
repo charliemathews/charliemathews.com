@@ -52,3 +52,17 @@
 	-moz-box-shadow: $h-shadow $v-shadow $blur $spread $color ;
 	-webkit-box-shadow: $h-shadow $v-shadow $blur $spread $color ;
 }
+
+@mixin border-radius($r)
+{
+	border-radius: $r ;
+	-moz-border-radius: $r ;
+	-webkit-border-radius: $r ;
+}
+
+@mixin transform_translate($x, $y) {
+	transform: translate($x, $y) ;
+	-ms-transform: translate($x, $y) ;
+	-moz-transform: translate($x, $y) ;
+	-webkit-transform: translate($x, $y) ;
+}
