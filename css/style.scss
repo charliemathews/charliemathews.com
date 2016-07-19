@@ -1,58 +1,82 @@
 @import 'normalize';
 @import 'mixins';
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
-@include font-face("League Spartan", "../assets/leaguespartan/leaguespartan-bold", bold, normal);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=PT+Serif);
 
+$color_defaultFontColor:	#303030 ;
+$color_title: 						#E4E9ED ;
+$color_titleTag: 					#C8D3DB ;
+$color_loadingBackground: #FFFFFF ;
 
-$backgroundColor: #1D262B ;
-
-$menu-button-height: 27px ;
-$menu-button-width: 35px ;
-$menu-main: #849199 ;
-$menu-active: #FFFFFF ;
-$menu-link: #DCDDD7 ;
-$menu-link-hover: #FFFFFF ;
-$menu-link-background: #363634 ;
- 
-@media all {
-	
+@media all
+{
 	html, body {
-    	max-width: 100%;
-    	overflow-x: hidden;
+  	max-width: 100%;
+    overflow-x: hidden;
+		//width: 100% ;
+		color: $color_defaultFontColor ;
 	}
 
-	html {
-		background: $backgroundColor ;
-	}
-	
-	img, video, canvas {
-	  max-width: 100%;
+	header #title
+	{
+		display: table ;
+		margin: 40px auto 0 ;
+		font-family: 'Open Sans', sans-serif ;
+		font-size: 69px ;
+		font-weight: 300 ;
+		letter-spacing: 4px ;
+		text-transform: uppercase ;
+		color: $color_title ;
 	}
 
-	ol, ul {
-		list-style: none ;
-		padding: 0 ;
+	header #tag
+	{
+		display: table ;
+		margin: -20px auto 40px ;
+		font-family: 'Open Sans', sans-serif ;
+		font-size: 19px ;
+		color: $color_titleTag ;
+	}
+
+	h2
+	{
 		margin: 0 ;
 	}
-	
-	section {
-		width: 100% ;
-		position: relative ;
+
+	.off {
+		-moz-animation-name: none !important ;
+		-webkit-animation-name: none !important ;
+		-ms-animation-name: none !important ;
+		animation-name: none !important ;
 	}
-	
-	section:after {
-		clear: both ;
+
+	@keyframes rotate_360 {
+		100% {transform:rotate(360deg);}
 	}
-	
+	@-webkit-keyframes rotate_360 {
+		100% {-webkit-transform: rotate(360deg);}
+	}
+	@-moz-keyframes rotate_360 {
+		100% {-moz-transform: rotate(360deg);}
+	}
+	@-ms-keyframes rotate_360 {
+		100% {-ms-transform: rotate(360deg);}
+	}
+
 	#loading {
 		position: absolute ;
 		top: 0 ;
 		left: 0 ;
+		width: 100% ;
 		height: 100% ;
 		z-index: 200 ;
-		background: #1D262B ;
+		background: $color_loadingBackground ;
 	}
-	
+
+	#loading:after {
+		clear: both ;
+	}
+
 	#preloader-wrap {
 		position: absolute ;
 		top: 50% ;
@@ -62,7 +86,7 @@ $menu-link-background: #363634 ;
 		-moz-transform: translate(-50%, -50%) ;
 		-ms-transform: translate(-50%, -50%) ;
 	}
-	
+
 	#preloader {
 		position: absolute ;
 		top: 50% ;
@@ -78,7 +102,7 @@ $menu-link-background: #363634 ;
 		-moz-animation: preloader 1.3s infinite linear;
 		-ms-animation: preloader 1.3s infinite linear;
 	}
-	
+
 	#preloader:after {
 		position:absolute;
 		width:50px;
@@ -96,7 +120,7 @@ $menu-link-background: #363634 ;
 		-moz-animation: preloader_after 1.3s infinite linear;
 		-ms-animation: preloader_after 1.3s infinite linear;
 	}
-	
+
 	@-webkit-keyframes preloader {
 		0% {-webkit-transform: rotate(0deg);}
 		50% {-webkit-transform: rotate(180deg);background:#525F66;}
@@ -137,7 +161,7 @@ $menu-link-background: #363634 ;
 		50% {border-top:10px solid #FFFFFF;border-bottom:10px solid #FFFFFF;}
 		100% {border-top:10px solid #2C3E47;border-bottom:10px solid #2C3E47;}
 	}
-	
+
 	#preloader-tag {
 		position: absolute ;
 		top: 50% ;
@@ -152,182 +176,107 @@ $menu-link-background: #363634 ;
 		text-transform: uppercase ;
 		color: #FFFFFF ;
 	}
-	
-	#splash {
-		height: 100% ;
-	}
 
-	#arcs {
-		z-index: 9 ;
-		position: absolute ;
-		top: 50% ;
-		left: 50% ;
-		/*transform-origin: 50% 50% ;*/
-		transform: translate(-50%, -50%) ;
-		-webkit-transform: translate(-50%, -50%) ;
-		-moz-transform: translate(-50%, -50%) ;
-		-ms-transform: translate(-50%, -50%) ;
-		display: table ;
+	#content
+	{
+		padding: 50px 0 ;
+		width: 700px ;
 		margin: auto ;
-		opacity: 0 ;
-	}
-
-	.arc {
-	    border: 1px solid #FFFFFF; /* the 'strokes' of the arc */
-	    display: inline-block;
-	    min-width: 520px ; /* the width of the innermost element */
-	    min-height: 520px ; /* the height of the innermost element */
-	    padding: 0.6em; /* the spacing between each arc */
-	    border-radius: 50%; /* for making the elements 'round' */
-	    border-top-color: transparent; /* hiding the top border */
-	    border-bottom-color: transparent;
-	}
-
-	#arc1 {
-		-webkit-animation: arc_rotate 8s infinite linear;
-		animation: arc_rotate 8s infinite linear;
-	    opacity: .6 ;
-	    border-width: 1px ;
-	    /*
-	    background-color: $backgroundColor ;
-	    @include box-shadow(0, 0, 50px, 50px, $backgroundColor);
-	    */
-	}
-
-	#arc2 {
-		-webkit-animation: arc_rotate 4s infinite linear;
-		animation: arc_rotate 20s infinite linear;
-	    opacity: 1 ;
-	    border-width: 1px ;
-	}
-
-	#arc3 {
-		-webkit-animation: arc_rotate 7s infinite linear;
-		animation: arc_rotate 7s infinite linear;
-	    opacity: .1 ;
-	    border-width: 8px ;
-	}
-
-	.off {
-		-moz-animation-name: none !important ;
-		-webkit-animation-name: none !important ;
-		-ms-animation-name: none !important ;
-		animation-name: none !important ;	
-	}
-
-	@keyframes arc_rotate {
-		100% {transform:rotate(360deg);}
-	}
-	@-webkit-keyframes arc_rotate {
-		100% {-webkit-transform: rotate(360deg);}
-	}
-	@-moz-keyframes arc_rotate {
-		100% {-moz-transform: rotate(360deg);}
-	}
-	@-ms-keyframes arc_rotate {
-		100% {-ms-transform: rotate(360deg);}
-	}
-	
-	header {
-		z-index: 10 ;
-		position: absolute ;
-		top: 50% ;
-		left: 50% ;
-		transform: translate(-50%, -50%) ;
-		-webkit-transform: translate(-50%, -50%) ;
-		-moz-transform: translate(-50%, -50%) ;
-		-ms-transform: translate(-50%, -50%) ;
-		color: #FFFFFF ;
-		overflow: hidden ;
-		cursor: pointer ;
-	}
-	
-	#splash-name-wrap {
-		width: 0 ;
-		overflow: hidden ;
 		clear: both ;
 	}
-	
-	#splash-name {
-		font-family: 'League Spartan', serif ;
-		font-size: 3em ;
+
+	article
+	{
+		font-family: 'Open Sans', serif ;
+		clear: both ;
+		margin-bottom: 10px ;
+	}
+
+	.article-meta
+	{
 		text-transform: uppercase ;
-		width: 490px ;
-		height: 46px ;
-		padding: 5px ;
-		background: #FFFFFF ;
-		color: #1D262B ;
+		color: #A1A1A1 ;
+		font-size: 12px ;
 	}
-	
-	#splash-tagline {
-		font-family: 'Raleway', sans-serif ;
-		font-size: 1.574em ;
-		text-transform: uppercase ;
-		overflow: hidden ;
-		float: left ;
+
+	article > h2
+	{
+		font-size: 57px ;
+		font-weight: 700 ;
+		letter-spacing: -0.04em ;
+		line-height: 1em ;
+		margin-left: -2px ;
+		margin-bottom: 35px ;
+		color: #222222 ;
 	}
-	
-	.splash-tag {
-		opacity: 0 ;
-	}
-	
-	#splash-social {
-		float: right ;
-	}
-	
-	#particles-js {
-		z-index: 5 ;
-		opacity: 0 ;
-	}
-	
-	#blog {
-		background: #303C42 ;
-		height: 100% ;
-		display: none ;
-	}
-	
-	.blog-showcase {
-		display: table ;
-		margin: auto ;
-		position: relative ;
-		top: 50% ;
-		transform: translateY(-50%) ;
-	}
-	
-	.blog-item {
-		height: 400px ;
-		width: 200px ;
-		transform: skewX(-20deg) ;
-		background: #f0f1e7 ;
-		float: left ;
-		margin: 5px ;
-		padding: 10px ;
-		border-top: 8px solid #D5D6C9 ;
-	}
-	
-	.blog-item-inner {
-		transform: skewX(20deg) ;
-		color: #000 ;
+
+	article > p
+	{
+		font-family: 'PT Serif', serif ;
+		font-weight: 400 ;
+		font-size: 21px ;
+		line-height: 35px ;
+		color: #2E2E2E ;
+
 	}
 }
 
-@media (max-width: 600px) {
-	#arcs {
-		display: none ;
+@media (max-width: 800px)
+{
+	#content
+	{
+		width: 500px ;
 	}
 
-	.arc {
-	    min-width: 300px ;
-	    min-height: 300px ;
+	article > h2
+	{
+		font-size: 35px ;
+	}
+}
+
+@media (max-width: 570px)
+{
+	header #title
+	{
+		font-size: 40px ;
+		letter-spacing: 4px ;
 	}
 
-	header {
-		
+	header #tag
+	{
+		margin-top: -10px ;
+		font-size: 14px ;
 	}
-	
-	#splash-name {
-		font-size: 1.7em ;
-		width: 278px ;
-		height: 24px ;
+
+	#content
+	{
+		width: auto ;
+		padding: 30px ;
+	}
+
+	article > h2
+	{
+		font-size: 24px ;
+	}
+
+	article > p
+	{
+		font-size: 18px ;
+		line-height: 30px ;
+	}
+}
+
+@media (max-width: 450px)
+{
+	#content
+	{
+		width: auto ;
+		padding: 10px ;
+	}
+
+	article > p
+	{
+		font-size: 16px ;
+		line-height: 24px ;
 	}
 }
