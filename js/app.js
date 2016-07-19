@@ -1,4 +1,4 @@
-//particlesJS.load('particles-js', 'assets/particles.json');
+particlesJS.load('particles', 'assets/particles.json');
 
 $(document).ready(function($) {
 
