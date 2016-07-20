@@ -10,15 +10,11 @@ $(document).ready(function($) {
 function showMenu() {
 	$("#burger").addClass("cross");
 	$("#menu").addClass("open");
-	$("#nav_curtain").animate({opacity:0.1}, 400);
-	$("#fadeout").animate({opacity:0}, 100);
 }
 
 function hideMenu() {
 	$("#burger").removeClass("cross");
 	$("#menu").removeClass("open");
-	$("#nav_curtain").animate({opacity:0}, 400);
-	$("#fadeout").animate({opacity:1}, 600);
 }
 
 // menu animation
@@ -35,4 +31,9 @@ $("#content").click(function() {
   if($("#burger").hasClass("cross")) {
 		hideMenu();
 	}
+});
+
+// hide menu if user scrolls
+$(window).scroll(function() {
+  hideMenu();
 });
