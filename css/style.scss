@@ -249,7 +249,7 @@
 
 		& #menu {
 			position: absolute ;
-			top: 0 ;//top: $burger_margin + $burger_height ;
+			top: $burger_margin + $burger_height ;
 			right: 0 ;
 			width: 700px ;
 			text-align: right ;
@@ -259,12 +259,13 @@
 			background: #FFF ;
 			@include transition($menu_transition);
 			z-index: 15 ;
-			border-bottom: 1px solid #ececec ;
+			border-bottom: 1px solid $color_menuBorder ;
 
 			& ul {
 				margin: 0 ;
 				padding: 0 ;
 				list-style-type: none ;
+				margin-left: 68px ;
 
 				& li {
 					display: block ;
@@ -272,10 +273,12 @@
 					cursor: pointer ;
 					clear: both ;
 					margin: 10px 0 ;
-					//@include transition(all .1s linear);
+					padding-left: 8px ;
+					@include transition(all .1s ease);
 
 					&:hover {
-
+						padding-left: 16px ;
+						border-left: 1px solid black ;
 					}
 				}
 
@@ -286,12 +289,12 @@
 					text-decoration: none ;
 					color: #000 ;
 					display: block ;
-					text-align: center ;
-					width: 100% ;
+					text-align: left ;
 					text-transform: lowercase ;
+					//@include transition(all .1s ease);
 
 					&:hover {
-						//text-decoration: underline ;
+						//color: #FFF ;
 					}
 				}
 			}
@@ -310,7 +313,7 @@
 		  position: relative ;
 		  @include transition($menu_transition);
 		  user-select: none ;
-		  z-index: 16;
+		  z-index: 20;
 		}
 
 		& .bun {
@@ -414,6 +417,10 @@ footer {
 		width: 500px ;
 	}
 
+	nav #menu {
+		width: 500px ;
+	}
+
 	article > h2 {
 		font-size: 35px ;
 	}
@@ -438,6 +445,28 @@ footer {
 	#column {
 		width: auto ;
 		padding: 30px ;
+	}
+
+	nav #menu {
+		width: auto ;
+		top: 25px ;
+		z-index: 15 ;
+		border-left: 1px solid $color_menuBorder ;
+		border-right: 1px solid $color_menuBorder  ;
+
+		& ul {
+			margin-left: auto ;
+
+			& li {
+				padding: 0 40px ;
+
+				&:hover {
+					padding-left: 46px ;
+					padding-right: 34px ;
+					border-left: 0px ;
+				}
+			}
+		}
 	}
 
 	article > h2 {

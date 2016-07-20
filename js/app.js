@@ -28,12 +28,10 @@ $("#burger").click(function() {
 
 // hide menu if user clicks on content? need to improve.
 $("#content").click(function() {
-  if($("#burger").hasClass("cross")) {
-		hideMenu();
-	}
+  if($("#burger").hasClass("cross")) hideMenu();
 });
 
 // hide menu if user scrolls
 $(window).scroll(function() {
-  hideMenu();
+  if($("#burger").hasClass("cross")) hideMenu();
 });
