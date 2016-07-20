@@ -312,9 +312,13 @@
 		  height: 25px;
 			width: 25px;
 		  position: relative ;
-		  @include transition($menu_transition);
+		  @include transition(opacity .2s ease);
 		  user-select: none ;
 		  z-index: 20 ;
+
+			&:hover {
+				opacity: 0.5 ;
+			}
 		}
 
 		& .bun {
@@ -335,10 +339,6 @@
 		  &-bot {
 		    top: 16px;
 		  }
-
-			&:hover {
-				opacity: 0 ;
-			}
 		}
 
 		& .cross {
