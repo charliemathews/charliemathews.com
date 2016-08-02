@@ -1,19 +1,9 @@
 @import 'normalize';
 @import 'mixins';
 @import 'colors';
+@import 'icons';
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700);
 @import url(http://fonts.googleapis.com/css?family=PT+Serif);
-
-@font-face {
-    font-family: "Samplina Neue";
-    font-style: italic;
-    font-weight: bold;
-    src: url("fonts/SamplinaNeue.eot?") format("eot"),
-         url("fonts/SamplinaNeue.woff2") format("woff2"),
-         url("fonts/SamplinaNeue.woff") format("woff"),
-         url("fonts/SamplinaNeue.ttf") format("truetype"),
-         url("fonts/SamplinaNeue.svg#Samplina_Neue") format("svg");
-}
 
 @media all
 {
@@ -245,6 +235,17 @@
 			font-weight: 300 ;
 			z-index: 15 ;
 		}
+
+    & #social {
+      float: left ;
+			color: #000000 ;
+
+      & .single {
+        float: left ;
+        //width: 50px ;
+        //height: 50px ;
+      }
+    }
 	}
 
 	/* Menu */
