@@ -1,10 +1,12 @@
 //particlesJS.load('particles', 'assets/particles.json');
 
-// handle loading animation
 $(document).ready(function($) {
+
+	//Loading animation
 	$("#preloader-wrap").animate({opacity: 0}, 400);
 	setTimeout(function() {$("#loading").animate({opacity: 0}, 200);}, 400);
 	setTimeout(function() {$("#loading").remove();}, 600);
+
 });
 
 function showMenu() {
@@ -17,7 +19,7 @@ function hideMenu() {
 	$("#menu").removeClass("open");
 }
 
-// menu animation
+//MENU: Animate on click
 $("#burger").click(function() {
   if(!$(this).hasClass("cross")) {
 		showMenu();
@@ -26,12 +28,12 @@ $("#burger").click(function() {
 	}
 });
 
-// hide menu if user clicks on content? need to improve.
+//MENU: Hide on content click
 $("#content").click(function() {
   if($("#burger").hasClass("cross")) hideMenu();
 });
 
-// hide menu if user scrolls
+//MENU: Hide on scroll
 $(window).scroll(function() {
   if($("#burger").hasClass("cross")) hideMenu();
 });
